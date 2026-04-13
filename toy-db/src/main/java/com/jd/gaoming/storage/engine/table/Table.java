@@ -34,9 +34,9 @@ public final class Table implements ITable{
 
     @Override
     public IRow search(Comparable<?> key) {
-        IRecord record = bTree.search(key);
+        ILeafRecord record = bTree.search(key);
         if(record == null)
-            throw new IllegalStateException("record " + key + " not found");
-        return bTree.search(key).toRow();
+            return null;
+        return record.toRow();
     }
 }
